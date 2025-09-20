@@ -26,7 +26,8 @@ app.use("/uploads", express.static(path.join(__dirname, "Uploads")));
 
 
 app.get("/", (req, res) => {
-    console.log("slkdjf")
+    console.log("slkdjf");
+  res.send("Backend running ✅");
 })
 // all routes
 app.use("/api/auth", authRoot);
