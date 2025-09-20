@@ -14,7 +14,12 @@ dotenv.config();
 const app = express();
 
 
-app.use(cors());
+// app.use(cors());
+app.use(cors({
+  origin: "https://book-on-desk.vercel.app", // your frontend
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
 app.use(express.json());
 app.use(bodyParser.json());
 app.use("/uploads", express.static(path.join(__dirname, "Uploads")));
