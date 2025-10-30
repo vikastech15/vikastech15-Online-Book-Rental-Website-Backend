@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pandeyroopam/Books_On_Desk.git"
+    "url": "https://github.com/vikastech15/vikastech15-Online-Book-Rental-Website-Backend.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/pandeyroopam/Books_On_Desk/issues"
+    "url": "https://github.com/vikastech15/vikastech15-Online-Book-Rental-Website-Backend/issues"
   },
-  "homepage": "https://github.com/pandeyroopam/Books_On_Desk#readme",
+  "homepage": "https://github.com/vikastech15/vikastech15-Online-Book-Rental-Website-Backend#readme",
   "dependencies": {
     "bcrypt": "^5.1.1",
     "bcryptjs": "^3.0.2",
