@@ -8,6 +8,7 @@ const Listing = require("../models/listing");
 const placeOrder = async (req, res) => {
   try {
     const { email, addressId, cartItems, paymentMethod } = req.body;
+    console.log("Incoming Order Body:", req.body); //new
 
     if (!email || !addressId || !cartItems?.length) {
       return res.status(400).json({ error: "Missing required fields." });
