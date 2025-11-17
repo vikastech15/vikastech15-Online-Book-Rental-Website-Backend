@@ -54,7 +54,6 @@ const placeOrder = async (req, res) => {
   }
 };
 
-module.exports = placeOrder;
 
 
 // Get orders for a specific user
