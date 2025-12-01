@@ -38,7 +38,7 @@ app.use("/api/admin", adminRoutes)
 
 
 mongoose
-  .connect("mongodb+srv://VIkasVerma:HinataN@cluster0.imnw1.mongodb.net/book-on-desk", {})
+  .connect(process.env.MONGO_URI, {})
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.log("MongoDB Error:", err));
 
