@@ -25,6 +25,7 @@ const orderSchema = new mongoose.Schema({
     required: function () {
       return this.type === "Rent";
     },
+    default:7,
   },
   status: {
     type: String,
