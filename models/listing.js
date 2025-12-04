@@ -25,7 +25,8 @@ const listingSchema = new Schema({
         type: Number,
         required: true,
     },
-    price : Number,
+    price : {
+        type : Number},
     owner : {
         type: Schema.Types.ObjectId,
         ref: User,
