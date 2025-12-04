@@ -2,6 +2,7 @@ const express = require("express");
 const Listing = require("../models/listing");
 const User = require("../models/users");
 const router = express.Router();
+const cloudinary = require("../config/cloudinary");
 
 // ----- LISTING (BOOKS) CRUD -----
 
@@ -49,12 +50,36 @@ router.put("/books/:id", async (req, res) => {
 });
 
 // Delete a book
+// router.delete("/books/:id", async (req, res) => {
+//   try {
+//     const deletedBook = await Listing.findByIdAndDelete(req.params.id);
+//     if (!deletedBook) return res.status(404).json({ error: "Book not found" });
+//     res.status(200).json({ message: "Book deleted successfully" });
+//   } catch (err) {
+//     res.status(500).json({ error: "Failed to delete book" });
+//   }
+// });
+// Delete a book
 router.delete("/books/:id", async (req, res) => {
   try {
-    const deletedBook = await Listing.findByIdAndDelete(req.params.id);
-    if (!deletedBook) return res.status(404).json({ error: "Book not found" });
-    res.status(200).json({ message: "Book deleted successfully" });
+    const book = await Listing.findById(req.params.id);
+    if (!book) return res.status(404).json({ error: "Book not found" });
+
+    // Delete all images from Cloudinary
+    if (book.images && book.images.length > 0) {
+      for (const img of book.images) {
+        if (img.filename) {
+          await cloudinary.uploader.destroy(img.filename);
+        }
+      }
+    }
+
+    // Delete the book from MongoDB
+    await Listing.findByIdAndDelete(req.params.id);
+
+    res.status(200).json({ message: "Book deleted successfully (images removed from Cloudinary)" });
   } catch (err) {
+    console.error(err);
     res.status(500).json({ error: "Failed to delete book" });
   }
 });
